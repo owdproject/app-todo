@@ -1,6 +1,6 @@
 <script setup>
 import {nanoid} from "nanoid";
-import {useTodoStore} from "../../stores/storeTodo";
+import {useTodoStore} from "owd-app-todo/stores/storeTodo";
 import {computed} from "@vue/reactivity"
 
 const todoStore = useTodoStore()
