@@ -35,10 +35,6 @@ This app for Open Web Desktop provides a simple and effective to-do list manager
     })
     ```
 
-## Compatibility
-
-The application is compatible with Open Web Desktop client version `3.0.0-alpha.6`.
-
 ## License
 
 The application is released under the [GNU General Public License v3](LICENSE).
