@@ -1,8 +1,12 @@
 {
   "name": "@owdproject/app-todo",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "To-do App for your Open Web Desktop client",
-  "keywords": ["owd-client", "owd-apps", "owd-modules"],
+  "keywords": [
+    "owd-client",
+    "owd-apps",
+    "owd-modules"
+  ],
   "license": "GPL-3.0-or-later",
   "homepage": "https://github.com/owdproject/app-todo",
   "author": {
@@ -10,6 +14,6 @@
     "url": "https://github.com/owdproject"
   },
   "peerDependencies": {
-    "@owdproject/core": ">=3.1.0-alpha.0"
+    "@owdproject/core": "3.1.0"
   }
 }
