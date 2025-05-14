@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import {nanoid} from "nanoid";
 import {useTodoStore} from "owd-app-todo/stores/storeTodo";
 import {computed} from "@vue/reactivity"
@@ -43,12 +43,12 @@ function todoAdd(item) {
 /**
  * Remove to-do
  */
-function todoRemove(item) {
-  const index = todoStore.list.indexOf(item);
-
-  if (index !== false) {
-    todoStore.list.splice(index, 1);
+function onTodoRemove(index: number) {
+  if (confirm('Are you sure to remove this item?') !== true) {
+    return
   }
+
+  todoStore.list.splice(index, 1);
 }
 </script>
 
@@ -62,7 +62,7 @@ function todoRemove(item) {
       <div class="todo-list">
         <ul>
           <template v-for="(todo, index) in todoListFiltered" :key="todo.id">
-            <TodoList :todo="todo" @todo-remove="todoRemove"/>
+            <TodoListItem :todo="todo" @remove="onTodoRemove(index)"/>
           </template>
         </ul>
       </div>
