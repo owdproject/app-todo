@@ -7,7 +7,7 @@
     "owd-apps",
     "owd-modules"
   ],
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "homepage": "https://github.com/owdproject/app-todo",
   "author": {
     "name": "Open Web Desktop Team",
