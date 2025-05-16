@@ -13,7 +13,7 @@ This app for Open Web Desktop provides a simple and effective to-do list manager
 ## Installation
 
 ```bash
-nx run desktop:install-app --name=@owdproject/app-todo
+owd install-app @owdproject/app-todo
 ```
 
 ## Usage
