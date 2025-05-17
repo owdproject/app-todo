@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import {ref, nextTick} from "vue"
+import { ref, nextTick } from 'vue'
 
-defineEmits([
-  'remove'
-])
+defineEmits(['remove'])
 
 const props = defineProps({
-  todo: Object
+  todo: Object,
 })
 
 const todoTitleDraft = ref<string>(props.todo.title)
@@ -17,7 +15,7 @@ const isEditing = ref(false)
  */
 function onTodoDblClickEdit(e) {
   if (!isEditing.value) {
-    onTodoEdit(e);
+    onTodoEdit(e)
   }
 }
 
@@ -25,13 +23,13 @@ function onTodoDblClickEdit(e) {
  * Edit to-do
  */
 function onTodoEdit(e?) {
-  isEditing.value = !isEditing.value;
+  isEditing.value = !isEditing.value
 
   if (isEditing.value && e) {
     const liElement = e.target.closest('li')
 
     // focus input
-    nextTick(() => liElement.querySelector('input').focus())
+    nextTick(() => liElement.querySelector('input[type="text"]').focus())
   }
 }
 
@@ -63,11 +61,10 @@ function onTodoEditCancel() {
 <template>
   <li :class="{ editing: isEditing, completed: props.todo.completed }">
     <div class="todo-list__checkbox flex items-center">
-      <Checkbox binary v-model="todo.completed"/>
+      <Checkbox binary v-model="todo.completed" />
     </div>
 
     <div clasS="todo-list__input">
-
       <InputText
         v-if="isEditing"
         v-model="todoTitleDraft"
@@ -84,22 +81,19 @@ function onTodoEditCancel() {
         v-text="props.todo.title"
         @dblclick="onTodoEdit"
       />
-
     </div>
 
     <div class="todo-list__actions flex items-center">
-
       <ButtonGroup>
         <Button class="btn-edit" @click="onTodoEdit">
-          <Icon name="mdi:pencil" v-if="!isEditing"/>
-          <Icon name="mdi:content-save" v-else/>
+          <Icon name="mdi:pencil" v-if="!isEditing" />
+          <Icon name="mdi:content-save" v-else />
         </Button>
 
         <Button class="btn-remove" @click="$emit('remove')">
-          <Icon name="mdi:window-close"/>
+          <Icon name="mdi:window-close" />
         </Button>
       </ButtonGroup>
-
     </div>
   </li>
 </template>

@@ -1,27 +1,31 @@
 <script setup lang="ts">
-import {nanoid} from "nanoid";
-import {useTodoStore} from "owd-app-todo/stores/storeTodo";
-import {computed} from "@vue/reactivity"
+import { nanoid } from 'nanoid'
+import { useTodoStore } from 'owd-app-todo/stores/storeTodo'
+import { computed } from '@vue/reactivity'
 
 const todoStore = useTodoStore()
 
 const todoCount = computed(() => todoStore.list.length)
-const todoCountCompleted = computed(() => todoStore.list.filter((item) => item.completed).length)
-const todoCountNotCompleted = computed(() => todoStore.list.filter((item) => !item.completed).length)
+const todoCountCompleted = computed(
+  () => todoStore.list.filter((item) => item.completed).length,
+)
+const todoCountNotCompleted = computed(
+  () => todoStore.list.filter((item) => !item.completed).length,
+)
 
 const todoListFiltered = computed(() => {
   return todoStore.list
-      .sort((a, b) => (+b.completed) - (+a.completed))
-      .filter(function (item) {
-        switch (todoStore.filter) {
-          case 'todo':
-            return item.completed === false;
-          case 'done':
-            return item.completed === true;
-          default:
-            return true;
-        }
-      })
+    .sort((a, b) => +b.completed - +a.completed)
+    .filter(function (item) {
+      switch (todoStore.filter) {
+        case 'todo':
+          return item.completed === false
+        case 'done':
+          return item.completed === true
+        default:
+          return true
+      }
+    })
 })
 
 function todoAdd(item) {
@@ -30,8 +34,8 @@ function todoAdd(item) {
       id: nanoid(8),
       title: item,
       completed: false,
-      editing: false
-    });
+      editing: false,
+    })
 
     // set show All if Done filter is active
     if (todoStore.filter === 'done') {
@@ -48,12 +52,12 @@ function onTodoRemove(index: number) {
     return
   }
 
-  todoStore.list.splice(index, 1);
+  todoStore.list.splice(index, 1)
 }
 </script>
 
 <template>
-  <Window :content="{padded: true}">
+  <Window :content="{ padded: true }">
     <div class="todo-container">
       <div class="todo-input">
         <TodoInput @todo-add="todoAdd" />
@@ -62,22 +66,32 @@ function onTodoRemove(index: number) {
       <div class="todo-list">
         <ul>
           <template v-for="(todo, index) in todoListFiltered" :key="todo.id">
-            <TodoListItem :todo="todo" @remove="onTodoRemove(index)"/>
+            <TodoListItem :todo="todo" @remove="onTodoRemove(index)" />
           </template>
         </ul>
       </div>
 
       <ul class="todo-stats">
-        <li>
-          To do: {{ todoCountNotCompleted }}
-        </li>
+        <li>To do: {{ todoCountNotCompleted }}</li>
         <li v-if="todoCount > 0">
           Completed: {{ todoCountCompleted }} / {{ todoCount }}
         </li>
         <li>
-          <a :class="[{ 'opacity-50': todoStore.filter !== 'all' }]" @click="todoStore.filter = 'all'">all</a>
-          <a :class="[{ 'opacity-50': todoStore.filter !== 'todo' }]" @click="todoStore.filter = 'todo'">to do</a>
-          <a :class="[{ 'opacity-50': todoStore.filter !== 'done' }]" @click="todoStore.filter = 'done'">done</a>
+          <a
+            :class="[{ 'opacity-50': todoStore.filter !== 'all' }]"
+            @click="todoStore.filter = 'all'"
+            >all</a
+          >
+          <a
+            :class="[{ 'opacity-50': todoStore.filter !== 'todo' }]"
+            @click="todoStore.filter = 'todo'"
+            >to do</a
+          >
+          <a
+            :class="[{ 'opacity-50': todoStore.filter !== 'done' }]"
+            @click="todoStore.filter = 'done'"
+            >done</a
+          >
         </li>
       </ul>
     </div>
