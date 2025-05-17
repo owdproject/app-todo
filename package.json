@@ -1,6 +1,6 @@
 {
   "name": "@owdproject/app-todo",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "To-do App for your Open Web Desktop client",
   "keywords": [
     "owd-client",
