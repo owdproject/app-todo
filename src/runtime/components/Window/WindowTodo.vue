@@ -33,14 +33,7 @@ function todoAdd(item: string) {
   todoStore.addTodo(item)
 }
 
-/**
- * Remove to-do
- */
 function onTodoRemove(todoId: string) {
-  if (confirm('Are you sure to remove this item?') !== true) {
-    return
-  }
-
   todoStore.removeTodo(todoId)
 }
 </script>
@@ -53,10 +46,16 @@ function onTodoRemove(todoId: string) {
       </div>
 
       <div class="todo-list">
-        <ul>
-          <template v-for="todo in todoListFiltered" :key="todo.id">
-            <TodoListItem :todo="todo" @remove="onTodoRemove(todo.id)" />
-          </template>
+        <p v-if="todoListFiltered.length === 0" class="todo-list__empty">
+          No items.
+        </p>
+        <ul v-else class="todo-list__items">
+          <TodoListItem
+            v-for="todo in todoListFiltered"
+            :key="todo.id"
+            :todo="todo"
+            @remove="onTodoRemove(todo.id)"
+          />
         </ul>
       </div>
 
@@ -94,12 +93,26 @@ function onTodoRemove(todoId: string) {
   height: 100%;
   padding-bottom: 34px;
 
+  .todo-input {
+    padding-right: 0;
+  }
+
   .todo-list {
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
 
-    ul {
-      list-style-type: none;
-      padding: 0;
+    &__empty {
+      margin: 24px 0;
+      font-size: var(--p-font-size);
+      color: rgb(var(--owd-theme-color-dark));
+      text-align: center;
+      user-select: none;
+    }
+
+    &__items {
+      list-style: none;
+      padding: 8px 0;
       margin: 0;
     }
   }

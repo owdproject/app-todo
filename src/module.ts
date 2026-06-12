@@ -6,11 +6,11 @@ import {
   addPlugin,
   addImportsDir,
 } from '@nuxt/kit'
-import { registerTailwindPath } from '@owdproject/core'
+import { registerTailwindPath } from '@owdproject/kit-primevue/kit/registerTailwindPath'
 
 export default defineNuxtModule({
   meta: {
-    name: 'owd-app-todo',
+    name: 'desktop-app-todo',
   },
   async setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)

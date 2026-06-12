@@ -10,7 +10,6 @@
       />
       <Button
         type="submit"
-        variant="text"
         class="todo-input-form__submit"
         aria-label="Add to-do"
         title="Add"
@@ -44,35 +43,24 @@ function todoAdd() {
   width: 100%;
 
   &__field {
-    position: relative;
+    display: flex;
+    gap: 6px;
     width: 100%;
   }
 
   :deep(.p-inputtext) {
-    width: 100%;
-    min-height: 52px;
-    padding-right: 52px;
+    flex: 1;
+    min-height: 32px;
+    height: 32px;
   }
 
   &__submit {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 52px;
-    min-height: 52px;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    min-height: 32px;
     margin: 0;
     padding: 0;
-    border: none;
-    background: transparent;
-    box-shadow: none;
-
-    &:hover,
-    &:focus,
-    &:active {
-      background: transparent;
-      box-shadow: none;
-    }
   }
 }
 </style>

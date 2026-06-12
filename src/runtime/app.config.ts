@@ -7,7 +7,8 @@ export default {
   windows: {
     main: {
       component: () => import('./components/Window/WindowTodo.vue'),
-      resizable: false,
+      resizable: true,
+      maximizable: true,
       size: {
         width: 480,
         height: 320,
@@ -22,6 +23,11 @@ export default {
   entries: {
     todo: {
       command: 'todo',
+    },
+  },
+  terminal: {
+    todo: {
+      description: 'Open the To-do app',
     },
   },
   commands: {
