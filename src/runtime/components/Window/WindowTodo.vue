@@ -39,7 +39,7 @@ function onTodoRemove(todoId: string) {
 </script>
 
 <template>
-  <Window :content="{ padded: true }">
+  <DesktopWindow :content="{ padded: true }">
     <div class="todo-container">
       <div class="todo-input">
         <TodoInput @todo-add="todoAdd" />
@@ -83,7 +83,7 @@ function onTodoRemove(todoId: string) {
         </li>
       </ul>
     </div>
-  </Window>
+  </DesktopWindow>
 </template>
 
 <style scoped lang="scss">
