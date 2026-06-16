@@ -6,7 +6,7 @@ import {
   addPlugin,
   addImportsDir,
 } from '@nuxt/kit'
-import { registerTailwindPath } from '@owdproject/kit-primevue/kit/registerTailwindPath'
+import { registerTailwindPath } from '@owdproject/kit-tailwind/kit/registerTailwindPath'
 
 export default defineNuxtModule({
   meta: {

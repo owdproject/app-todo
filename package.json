@@ -46,6 +46,10 @@
   "dependencies": {
     "@nuxt/kit": "^4.4.6"
   },
+  "peerDependencies": {
+    "@owdproject/core": "^3.4.1",
+    "@owdproject/kit-tailwind": "^0.1.0"
+  },
   "devDependencies": {
     "@nuxt/devtools": "^3.2.4",
     "@nuxt/eslint-config": "^1.15.2",
