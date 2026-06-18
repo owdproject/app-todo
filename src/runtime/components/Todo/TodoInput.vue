@@ -3,8 +3,9 @@
     <div class="todo-input-form__field">
       <InputText
         v-model="input"
-        placeholder="Remember me to-do..."
+        placeholder="New task..."
         autocomplete="off"
+        spellcheck="false"
         @keydown.enter.prevent="todoAdd"
         @keyup.enter.prevent="todoAdd"
       />

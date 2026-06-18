@@ -203,7 +203,6 @@ function onTitleDblClick(e: MouseEvent) {
     height: 32px;
     padding: 0;
     margin: 0;
-    color: rgb(var(--owd-elevation-color, 30 30 30) / 0.72);
 
     &--primary {
       color: rgb(var(--owd-theme-color-primary, 37 99 235));
