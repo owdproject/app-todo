@@ -50,12 +50,6 @@ jobs:
           repository: owdproject/theme-nova
           path: client/themes/theme-nova
 
-      - name: Checkout app-about
-        uses: actions/checkout@v4
-        with:
-          repository: owdproject/app-about
-          path: client/apps/app-about
-
       - name: Overlay this app-todo repo
         uses: actions/checkout@v4
         with:
