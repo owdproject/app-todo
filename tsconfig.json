@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": [
-    "src/runtime",
+    "src/runtime/**/*",
     "src/module.ts",
     "../../packages/core/types/index.d.ts"
   ],
@@ -11,6 +11,9 @@
     "playground"
   ],
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@owdproject/core/runtime/stores/storeApplicationMeta": ["./src/runtime/shims.d.ts"]
+    }
   }
 }

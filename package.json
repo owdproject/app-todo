@@ -46,15 +46,16 @@
   "dependencies": {
     "@nuxt/kit": "^4.4.6",
     "@owdproject/kit-tailwind": "workspace:*",
-    "@owdproject/kit-primevue": "workspace:*"
+    "@owdproject/kit-primevue": "workspace:*",
+    "nanoid": "^5.1.11"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^1.0.2",
-    "@nuxt/schema": "^4.3.0",
+    "@nuxt/schema": "^4.4.6",
     "@owdproject/core": "workspace:*",
     "@owdproject/theme-nova": "workspace:*",
-    "nuxt": "^4.3.0",
-    "typescript": "~5.9.3"
+    "nuxt": "^4.4.6",
+    "typescript": "~6.0.3"
   },
   "peerDependencies": {
     "@owdproject/core": "^3.4.0"
