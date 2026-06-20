@@ -9,8 +9,6 @@ export default defineNuxtPlugin({
   name: 'app-todo-playground-launch',
   dependsOn: ['desktop-app-todo-register'],
   async setup(nuxtApp) {
-    if (!import.meta.dev) return
-
     const applicationManager = useApplicationManager()
 
     async function surfaceWindow() {

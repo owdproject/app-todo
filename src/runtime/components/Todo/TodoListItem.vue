@@ -130,7 +130,7 @@ function onTitleDblClick(e: MouseEvent) {
         </Button>
         <Button
           type="button"
-          class="todo-list-item__action todo-list-item__action--danger"
+          class="todo-list-item__action"
           aria-label="Remove"
           title="Remove"
           @click="emit('remove')"
