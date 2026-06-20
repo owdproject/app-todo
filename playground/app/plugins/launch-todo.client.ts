@@ -32,12 +32,11 @@ export default defineNuxtPlugin({
 
     nuxtApp.hook('app:mounted', async () => {
       await nextTick()
-      await surfaceWindow()
-    })
 
-    for (let attempt = 0; attempt < 80; attempt++) {
-      if (await surfaceWindow()) return
-      await new Promise((resolve) => setTimeout(resolve, 50))
-    }
+      for (let attempt = 0; attempt < 80; attempt++) {
+        if (await surfaceWindow()) return
+        await new Promise((resolve) => setTimeout(resolve, 50))
+      }
+    })
   },
 })
