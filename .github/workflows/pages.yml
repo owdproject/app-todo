@@ -38,6 +38,12 @@ jobs:
           repository: owdproject/kit-primevue
           path: client/packages/kit-primevue
 
+      - name: Checkout module-fs
+        uses: actions/checkout@v4
+        with:
+          repository: owdproject/module-fs
+          path: client/packages/module-fs
+
       - name: Checkout theme-nova
         uses: actions/checkout@v4
         with:
