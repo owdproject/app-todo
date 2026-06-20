@@ -44,6 +44,12 @@ jobs:
           repository: owdproject/module-fs
           path: client/packages/module-fs
 
+      - name: Checkout module-persistence
+        uses: actions/checkout@v4
+        with:
+          repository: owdproject/module-persistence
+          path: client/packages/module-persistence
+
       - name: Checkout theme-nova
         uses: actions/checkout@v4
         with:

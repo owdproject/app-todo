@@ -10,7 +10,8 @@
   "dependencies": {
     "@owdproject/core": "workspace:*",
     "@owdproject/app-todo": "workspace:*",
-    "nuxt": "^4.4.4",
-    "@owdproject/theme-nova": "workspace:*"
+    "@owdproject/module-persistence": "workspace:*",
+    "@owdproject/theme-nova": "workspace:*",
+    "nuxt": "^4.4.4"
   }
 }
