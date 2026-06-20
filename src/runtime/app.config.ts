@@ -13,11 +13,6 @@ export default {
         width: 480,
         height: 320,
       },
-      position: {
-        x: 400,
-        y: 240,
-        z: 0,
-      },
     },
   },
   entries: {
