@@ -1,37 +1,86 @@
 name: Deploy playground to GitHub Pages
+
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
   group: pages
   cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - name: Checkout OWD client (workspace deps)
+        uses: actions/checkout@v4
+        with:
+          repository: owdproject/client
+          path: client
+          submodules: recursive
+
+      - name: Checkout kit-tailwind
+        uses: actions/checkout@v4
+        with:
+          repository: owdproject/kit-tailwind
+          path: client/packages/kit-tailwind
+
+      - name: Checkout kit-primevue
+        uses: actions/checkout@v4
+        with:
+          repository: owdproject/kit-primevue
+          path: client/packages/kit-primevue
+
+      - name: Checkout theme-nova
+        uses: actions/checkout@v4
+        with:
+          repository: owdproject/theme-nova
+          path: client/themes/theme-nova
+
+      - name: Overlay this app-todo repo
+        uses: actions/checkout@v4
+        with:
+          path: client/apps/app-todo
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
+
       - run: npm i -g --force corepack@latest && corepack enable
-      - run: npx nypm@latest i
-      - run: npm run dev:prepare
-      - run: npm run dev:generate
+
+      - name: Install monorepo dependencies
+        working-directory: client
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Prepare module and playground
+        working-directory: client/apps/app-todo
+        run: pnpm run dev:prepare
+
+      - name: Generate static playground
+        working-directory: client/apps/app-todo
+        run: pnpm run dev:generate
         env:
           NUXT_APP_BASE_URL: /app-todo/
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: playground/.output/public
+          path: client/apps/app-todo/playground/.output/public
+
   deploy:
     needs: build
-    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

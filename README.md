@@ -12,10 +12,24 @@
 
 This app for Open Web Desktop provides a simple and effective to-do list manager.
 
+[Demo](https://owdproject.github.io/app-todo/) · [Documentation](https://owdproject.github.io/docs/) · [Support](https://github.com/sponsors/owdproject)
+
 ## Installation
 
 ```bash
-pnpm desktop add @owdproject/app-todo
+pnpm desktop add app-todo
+```
+
+## Configuration
+
+Add the app to your `desktop.config.ts`:
+
+```ts
+export default defineDesktopConfig({
+  apps: [
+    '@owdproject/app-todo'
+  ]
+})
 ```
 
 ## Usage
@@ -29,4 +43,4 @@ todo <text>
 
 ## License
 
-The application is released under the [MIT License](LICENSE).
+This application is released under the [MIT License](LICENSE).
